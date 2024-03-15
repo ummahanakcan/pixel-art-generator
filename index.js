@@ -28,9 +28,9 @@ let deviceType = "";
 let draw = false;
 let erase = false;
 
-var isTouchDevise = () => {
+var isTouchDevice = () => {
   try {
-    document.createElement("TouchEvent");
+    document.createEvent("TouchEvent");
     deviceType = "touch";
     return true;
   } catch (e) {
@@ -39,10 +39,12 @@ var isTouchDevise = () => {
   }
 };
 
+isTouchDevice();
+
 gridButton.addEventListener("click", () => {
   container.innerHTML = "";
-  count = 0;
-  for (i = 0; i < gridHeight.value; i++) {
+  let count = 0;
+  for (let i = 0; i < gridHeight.value; i++) {
     count += 2;
     let div = document.createElement("div");
     div.classList.add("gridRow");
@@ -72,8 +74,10 @@ gridButton.addEventListener("click", () => {
       col.addEventListener(events[deviceType].up, () => {
         draw = false;
       });
+
       div.appendChild(col);
     }
+
     container.appendChild(div);
   }
 });
