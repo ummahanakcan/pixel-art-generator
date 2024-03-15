@@ -91,6 +91,21 @@ function checker(elementId) {
   });
 }
 
+clearGridButton.addEventListener("click", () => {
+  container.innerHTML = "";
+});
+
+eraseBtn.addEventListener("click", () => {
+  erase = true;
+});
+
+eraseAll.addEventListener("click", () => {
+  let gridColumns = document.querySelectorAll(".gridCol");
+  gridColumns.forEach(
+    (element) => (element.style.backgroundColor = "transparent")
+  );
+});
+
 gridWidth.addEventListener("input", () => {
   widthValue.innerHTML =
     gridWidth.value < 9 ? `0${gridWidth.value}` : gridWidth.value;
