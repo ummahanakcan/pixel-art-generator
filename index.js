@@ -52,6 +52,14 @@ gridButton.addEventListener("click", () => {
       let col = document.createElement("div");
       col.classList.add("gridCol");
       col.setAttribute("id", `gridCol${count}`);
+      col.addEventListener(events[deviceType].down, () => {
+        draw = true;
+        if (erase) {
+          col.style.backgroundColor = "transparent";
+        } else {
+          col.style.backgroundColor = colorButton.value;
+        }
+      });
       div.appendChild(col);
     }
     container.appendChild(div);
